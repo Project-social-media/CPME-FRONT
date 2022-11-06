@@ -17,7 +17,8 @@
 		"src/polyfills.ts": true,
 		"src/favicon.ico": true,
 		"src/test.ts": true,
-		"src/environments": true
+		"src/environments": true,
+		"karma.conf.js": true
 	},
 	"editor.tokenColorCustomizations": {
 		"comments": "#414141"
