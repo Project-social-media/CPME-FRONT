@@ -20,17 +20,4 @@ import { apiURL } from 'src/scripts/global';
 //
 export class UsersService {
 	constructor(private http: HttpClient) {}
-
-	// get users request with authorization header
-	getUsers(): Observable<any> {
-		return this.http.get(`${apiURL}/users`, {
-			headers: {
-				Authorization: `Bearer ${localStorage.getItem('token')}`,
-			},
-		});
-	}
-
-	getUserByName(name: string): Observable<any> {
-		return this.http.get(`${apiURL}/users/username/${name}`);
-	}
 }

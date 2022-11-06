@@ -44,25 +44,6 @@ export class LoginPageComponent implements OnInit {
 
 	onSubmit() {
 		if (!this.loginForm.valid) return;
-
-		this.usersService.getUserByName(this.loginForm.value.username!).subscribe({
-			next: (res) => {
-				if (res == null) {
-					alert('Utilisateur ou mot de passe incorrect.');
-					return;
-				}
-
-				this.userAuth();
-			},
-
-			error: (err) => {
-				console.log(err);
-			},
-
-			complete: () => {},
-		});
-
-		console.log('this.loginForm.value');
 	}
 
 	//
@@ -76,7 +57,7 @@ export class LoginPageComponent implements OnInit {
 			next: (res) => {
 				// save token in local storage
 				localStorage.setItem('token', res.accessToken);
-				window.location.href = '/loading';
+				window.location.href = '/dashboard';
 			},
 
 			error: (err) => {
