@@ -8,20 +8,7 @@ export class AuthGuard implements CanActivate {
 	constructor(private authService: AuthService, private router: Router) {}
 
 	async canActivate() {
-		// Get token from local storage
-		const token = localStorage.getItem('token');
-
-		if (!token) {
-			// Check token validity
-			this.router.navigate(['/login']);
-			return false;
-		}
-
-		const response = await lastValueFrom(this.authService.checkToken(token!));
-
-		if (response.valid) return true;
-
-		this.router.navigate(['/login']);
+		// const response = await lastValueFrom(this.authService.checkToken(token!));
 		return false;
 	}
 }

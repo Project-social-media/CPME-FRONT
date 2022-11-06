@@ -8,8 +8,6 @@ import { AuthService } from '@src/services/apis/auth.service';
 	styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-	checkToken: boolean = false;
-
 	//
 	// ---------
 	// Constructor
@@ -17,13 +15,5 @@ export class AppComponent {
 	//
 	constructor(private authService: AuthService) {}
 
-	async ngOnInit() {
-		// check if current route is login
-		if (window.location.pathname === '/login' && localStorage.getItem('token')) {
-			const response = await lastValueFrom(this.authService.checkToken(localStorage.getItem('token')!));
-			if (response.valid) window.location.href = '/dashboard';
-		} else {
-			this.checkToken = true;
-		}
-	}
+	async ngOnInit() {}
 }
