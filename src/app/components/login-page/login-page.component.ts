@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '@src/services/apis/auth.service';
 import { UsersService } from '@src/services/apis/users.service';
+import { last, lastValueFrom } from 'rxjs';
 
 @Component({
 	selector: 'app-login-page',
@@ -44,6 +45,17 @@ export class LoginPageComponent implements OnInit {
 
 	onSubmit() {
 		if (!this.loginForm.valid) return;
+
+		this.authService.login(this.loginForm.value.username!, this.loginForm.value.password!).subscribe({
+			next: async (response) => {
+				// Save token to local storage
+				localStorage.setItem('token', response.accessToken);
+				window.location.href = '/dashboard';
+			},
+			error: (error) => {
+				console.log(error);
+			},
+		});
 	}
 
 	//
@@ -51,20 +63,4 @@ export class LoginPageComponent implements OnInit {
 	// Authenticated user after login
 	// ---------
 	//
-
-	userAuth() {
-		this.authService.login(this.loginForm.value).subscribe({
-			next: (res) => {
-				// save token in local storage
-				localStorage.setItem('token', res.accessToken);
-				window.location.href = '/dashboard';
-			},
-
-			error: (err) => {
-				alert('Utilisateur ou mot de passe incorrect.');
-			},
-
-			complete: () => {},
-		});
-	}
 }

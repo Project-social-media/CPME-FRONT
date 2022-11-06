@@ -20,4 +20,12 @@ import { apiURL } from 'src/scripts/global';
 //
 export class UsersService {
 	constructor(private http: HttpClient) {}
+
+	// get all users with header token
+	getAllUsers(): Observable<any> {
+		return this.http.get(`${apiURL}/users`, {
+			observe: 'response',
+			headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+		});
+	}
 }

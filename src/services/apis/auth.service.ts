@@ -21,15 +21,13 @@ import { apiURL } from 'src/scripts/global';
 export class AuthService {
 	constructor(private http: HttpClient) {}
 
-	login(data: any): Observable<any> {
-		return this.http.post(`${apiURL}/auth/login`, data);
+	// Login
+	login(username: string, password: string): Observable<any> {
+		return this.http.post(`${apiURL}/auth/login`, { username, password });
 	}
 
-	checkToken(): Observable<any> {
-		return this.http.get(`${apiURL}/auth/checkToken`, {
-			headers: {
-				Authorization: `Bearer ${localStorage.getItem('token')}`,
-			},
-		});
+	// Check token validity without headers
+	checkToken(token: string): Observable<any> {
+		return this.http.post(`${apiURL}/auth/check-token`, { token });
 	}
 }
