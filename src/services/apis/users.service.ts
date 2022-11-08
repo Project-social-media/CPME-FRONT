@@ -25,7 +25,6 @@ export class UsersService {
 	getAllUsers(): Observable<any> {
 		return this.http.get(`${apiURL}/users`, {
 			observe: 'response',
-			headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
 		});
 	}
 }

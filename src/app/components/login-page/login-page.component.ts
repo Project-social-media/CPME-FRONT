@@ -44,17 +44,9 @@ export class LoginPageComponent implements OnInit {
 	//
 
 	onSubmit() {
-		if (!this.loginForm.valid) return;
-
-		this.authService.login(this.loginForm.value.username!, this.loginForm.value.password!).subscribe({
-			next: async (response) => {
-				// Save token to local storage
-				localStorage.setItem('token', response.accessToken);
-				window.location.href = '/dashboard';
-			},
-			error: (error) => {
-				console.log(error);
-			},
+		console.log('🚀 ~ file: login-page.component.ts ~ line 57 ~ LoginPageComponent ~ onSubmit ~ this.loginForm.value');
+		this.usersService.getAllUsers().subscribe((response) => {
+			console.log('🚀 ~ file: login-page.component.ts ~ line 63 ~ LoginPageComponent ~ onSubmit ~ response', response);
 		});
 	}
 
