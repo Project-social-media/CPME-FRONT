@@ -12,23 +12,24 @@ export class AuthGuard implements CanActivate {
 	async canActivate() {
 		const token = localStorage.getItem('token');
 
+		if (!token) this.router.navigate(['/login']);
+
+		return true;
+	}
+}
+
+@Injectable({
+	providedIn: 'root',
+})
+export class LoginAuthGuard implements CanActivate {
+	constructor(private usersService: UsersService, private router: Router) {}
+
+	async canActivate() {
+		const token = localStorage.getItem('token');
+
 		if (token) {
-			const response = await lastValueFrom(this.usersService.getUserByToken());
-
-			if (window.location.pathname === '/login' && response.valid) {
-				console.log('redirect to dashboard');
-				this.router.navigate(['/dashboard']);
-				return false;
-			}
-
-			if (window.location.pathname === '/dashboard' && !response.valid) {
-				console.log('redirect to login');
-				this.router.navigate(['/login']);
-				return false;
-			}
-		} else {
-			this.router.navigate(['/login']);
-			return false;
+			const user = await lastValueFrom(this.usersService.getUserByToken());
+			if (user) this.router.navigate(['/dashboard']);
 		}
 
 		return true;

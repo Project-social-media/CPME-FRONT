@@ -2,11 +2,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginPageComponent } from './components/login-page/login-page.component';
 import { DashboardPageComponent } from './components/dashboard-page/dashboard-page.component';
-import { AuthGuard } from '@src/scripts/guards/auth.guard';
+import { AuthGuard, LoginAuthGuard } from '@src/scripts/guards/auth.guard';
 
 const routes: Routes = [
 	{ path: '', redirectTo: 'login', pathMatch: 'full' },
-	{ path: 'login', component: LoginPageComponent, canActivate: [AuthGuard] },
+	{ path: 'login', component: LoginPageComponent, canActivate: [LoginAuthGuard] },
 	{ path: 'dashboard', component: DashboardPageComponent, canActivate: [AuthGuard] },
 ];
 
