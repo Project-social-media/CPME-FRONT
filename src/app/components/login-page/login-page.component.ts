@@ -44,9 +44,8 @@ export class LoginPageComponent implements OnInit {
 	//
 
 	onSubmit() {
-		console.log('🚀 ~ file: login-page.component.ts ~ line 57 ~ LoginPageComponent ~ onSubmit ~ this.loginForm.value');
-		this.usersService.getAllUsers().subscribe((response) => {
-			console.log('🚀 ~ file: login-page.component.ts ~ line 63 ~ LoginPageComponent ~ onSubmit ~ response', response);
+		this.usersService.getUserByToken().subscribe((res) => {
+			console.log(res);
 		});
 	}
 

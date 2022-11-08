@@ -23,8 +23,31 @@ export class UsersService {
 
 	// get all users with header token
 	getAllUsers(): Observable<any> {
-		return this.http.get(`${apiURL}/users`, {
-			observe: 'response',
-		});
+		return this.http.get(`${apiURL}/users`, { observe: 'response', responseType: 'json' });
+	}
+
+	// Get user by id
+	getUserById(id: string): Observable<any> {
+		return this.http.get(`${apiURL}/users/${id}`, { observe: 'response', responseType: 'json' });
+	}
+
+	// Get user by token
+	getUserByToken(): Observable<any> {
+		return this.http.get(`${apiURL}/users/getByIdInJwtToken`, { observe: 'response', responseType: 'json' });
+	}
+
+	// Create new user
+	createUser(data: any): Observable<any> {
+		return this.http.post(`${apiURL}/users`, data, { observe: 'response', responseType: 'json' });
+	}
+
+	// Update user
+	updateUser(id: string, data: any): Observable<any> {
+		return this.http.put(`${apiURL}/users/${id}`, data, { observe: 'response', responseType: 'json' });
+	}
+
+	// Delete user
+	deleteUser(id: string): Observable<any> {
+		return this.http.delete(`${apiURL}/users/${id}`, { observe: 'response', responseType: 'json' });
 	}
 }
