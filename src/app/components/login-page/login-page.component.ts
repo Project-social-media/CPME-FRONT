@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '@src/services/apis/auth.service';
 import { UsersService } from '@src/services/apis/users.service';
-import { last, lastValueFrom } from 'rxjs';
 
 @Component({
 	selector: 'app-login-page',
