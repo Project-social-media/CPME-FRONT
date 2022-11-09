@@ -20,4 +20,10 @@ import { User } from 'src/models/user.model';
 // Class
 // ----------------------------------------------------
 //
-export class AuthService {}
+export class AuthService {
+	constructor(private http: HttpClient) {}
+
+	login(username: String, password: String): Observable<any> {
+		return this.http.post(`${apiURL}/auth/login`, { username: username, password: password }, { observe: 'response', responseType: 'json' });
+	}
+}

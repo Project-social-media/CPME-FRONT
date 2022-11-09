@@ -50,4 +50,16 @@ export class UsersService {
 	deleteUser(id: string): Observable<any> {
 		return this.http.delete(`${apiURL}/users/${id}`, { observe: 'response', responseType: 'json' });
 	}
+
+	getUserByTokenCheck(): boolean {
+		this.getUserByToken().subscribe({
+			next: (res) => {
+				return true;
+			},
+			error: (err) => {
+				return false;
+			},
+		});
+		return false;
+	}
 }

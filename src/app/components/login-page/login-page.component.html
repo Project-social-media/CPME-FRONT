@@ -3,18 +3,31 @@
 		<div class="login-bg"></div>
 	</div>
 	<div class="left-container">
-		<img src="assets/images/cactus.png" alt="logo" class="logo" />
+		<img src="assets/images/cactus.png" alt="Cactus decoration image" class="cactus-decoration" />
+		<img src="assets/images/guy-desk.png" alt="Guy sitting at desk" class="guy-desk" />
+		<img src="assets/images/logo.png" alt="Logo" class="logo" />
+		<!-- Form -->
+		<div class="login-form-card">
+			<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+				<div class="form-group">
+					<div class="form-icon-container">
+						<img src="assets/images/utilisateur.png" alt="User icon" class="form-icon" />
+					</div>
+					<div class="form-login-container">
+						<input type="text" class="form-control" formControlName="username" />
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="form-icon-container">
+						<img src="assets/images/cadenas.png" alt="Cadenas" class="form-icon" />
+					</div>
+					<div class="form-login-container">
+						<input type="password" class="form-control" formControlName="password" />
+					</div>
+				</div>
+				<button type="submit" class="btn-submit btn-primary">CONNEXION</button>
+			</form>
+		</div>
+		<!-- Form -->
 	</div>
 </div>
-
-<!-- <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-	<div class="form-group">
-		<label for="username">Username</label>
-		<input type="text" class="form-control" formControlName="username" />
-	</div>
-	<div class="form-group">
-		<label for="password">Password</label>
-		<input type="password" class="form-control" formControlName="password" />
-	</div>
-	<button type="submit" class="btn btn-primary">Login</button>
-</form> -->

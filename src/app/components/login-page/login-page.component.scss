@@ -32,16 +32,191 @@
 	width: 100%;
 
 	backdrop-filter: blur(10px);
-	background-color: #f13f3279;
+	background-color: #ef1d197d;
 }
 
 .logo {
 	position: absolute;
+	top: 20%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+
+	height: 15%;
+	width: auto;
+}
+
+.cactus-decoration {
+	position: absolute;
 	bottom: 0;
 	left: 0;
 
-	height: 20%;
+	height: 25%;
 	width: auto;
 
-	margin: 40px;
+	margin-left: 80px;
+	margin-bottom: 20px;
+}
+
+.guy-desk {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+
+	height: 25%;
+	width: auto;
+
+	margin-right: 80px;
+	margin-bottom: 20px;
+}
+
+.login-form-card {
+	position: absolute;
+	top: 55%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+
+	height: 300px;
+	width: 70%;
+
+	max-width: 500px;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+// Form
+form {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+input {
+	color: #5b5b5b;
+}
+
+.form-group {
+	position: relative;
+
+	width: 90%;
+	height: 50px;
+	margin: 10px;
+
+	border: 1px solid #5b5b5b;
+	border-radius: 30px;
+
+	display: grid;
+	grid-template-columns: 20px 1fr;
+	grid-template-rows: 1fr;
+	gap: 0px 0px;
+	grid-template-areas: 'form-icon-container form-login-container';
+}
+
+.form-icon-container {
+	height: 100%;
+	grid-area: form-icon-container;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.form-login-container {
+	grid-area: form-login-container;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.form-icon {
+	height: 50%;
+	position: absolute;
+	top: 50%;
+	left: 15px;
+	transform: translateY(-50%);
+}
+
+.btn-submit {
+	background-color: #ef1e19;
+	color: #ffffff;
+	font-size: large;
+	font-weight: bold;
+	font-family: 'Roboto', sans-serif;
+
+	width: 75%;
+	height: 50px;
+	margin: 30px;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	border: none;
+	border-radius: 30px;
+
+	cursor: pointer;
+}
+
+input {
+	width: 80%;
+	height: 80%;
+	background-color: rgba(206, 101, 101, 0);
+	outline: none;
+	border: none;
+
+	font-size: 1.1rem;
+}
+
+// responsive
+@media screen and (max-width: 868px) {
+	.container {
+		grid-template-columns: 1fr;
+		grid-template-rows: 1fr 0fr;
+		grid-template-areas: 'left-container' 'right-container';
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.cactus-decoration {
+		margin-left: 20px;
+	}
+
+	.guy-desk {
+		margin-right: 20px;
+	}
+}
+
+@media screen and (max-width: 1150px) and (min-width: 868px) {
+	.cactus-decoration {
+		margin-left: 20px;
+	}
+
+	.guy-desk {
+		margin-right: 20px;
+	}
+}
+
+@media screen and (max-width: 400px) {
+	.guy-desk {
+		display: none;
+	}
+
+	.form-group {
+		width: 98%;
+		margin-left: 0;
+		margin-right: 0;
+	}
+
+	.btn-submit {
+		width: 75%;
+	}
+
+	.login-form-card {
+		width: 93%;
+	}
 }

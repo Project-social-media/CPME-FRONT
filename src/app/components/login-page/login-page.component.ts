@@ -43,14 +43,25 @@ export class LoginPageComponent implements OnInit {
 	//
 
 	onSubmit() {
-		this.usersService.getUserByToken().subscribe((res) => {
-			console.log(res);
+		if (!this.loginForm.valid) return;
+
+		var username: string = this.loginForm.get('username')!.value!;
+		var password: string = this.loginForm.get('password')!.value!;
+
+		this.authService.login(username, password).subscribe({
+			next: (res) => {
+				console.log('🚀 ~ file: login-page.component.ts ~ line 53 ~ LoginPageComponent ~ this.authService.login ~ res', res);
+				localStorage.setItem('token', res.body.accessToken);
+			},
+			error: (err) => {
+				console.log(err);
+			},
 		});
 	}
-
-	//
-	// ---------
-	// Authenticated user after login
-	// ---------
-	//
 }
+
+//
+// ---------
+// Authenticated user after login
+// ---------
+//

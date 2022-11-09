@@ -12,8 +12,8 @@ export class AuthGuard implements CanActivate {
 	async canActivate() {
 		const token = localStorage.getItem('token');
 
-		if (!token) this.router.navigate(['/login']);
-
+		if (!token) return false;
+		if (!this.usersService.getUserByTokenCheck()) return this.router.createUrlTree(['/login']);
 		return true;
 	}
 }
@@ -27,11 +27,8 @@ export class LoginAuthGuard implements CanActivate {
 	async canActivate() {
 		const token = localStorage.getItem('token');
 
-		if (token) {
-			const user = await lastValueFrom(this.usersService.getUserByToken());
-			if (user) this.router.navigate(['/dashboard']);
-		}
-
+		if (!token) return false;
+		if (this.usersService.getUserByTokenCheck()) return this.router.createUrlTree(['/dashboard']);
 		return true;
 	}
 }
