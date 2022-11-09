@@ -27,7 +27,7 @@ export class LoginAuthGuard implements CanActivate {
 	async canActivate() {
 		const token = localStorage.getItem('token');
 
-		if (!token) return false;
+		if (!token) return true;
 		if (this.usersService.getUserByTokenCheck()) return this.router.createUrlTree(['/dashboard']);
 		return true;
 	}
