@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { lastValueFrom, Observable } from 'rxjs';
 
 import { apiURL } from 'src/scripts/global';
 //
@@ -51,15 +51,13 @@ export class UsersService {
 		return this.http.delete(`${apiURL}/users/${id}`, { observe: 'response', responseType: 'json' });
 	}
 
-	getUserByTokenCheck(): boolean {
-		this.getUserByToken().subscribe({
-			next: (res) => {
-				return true;
-			},
-			error: (err) => {
-				return false;
-			},
-		});
-		return false;
+	async getUserByTokenCheck(): Promise<boolean> {
+		try {
+			const res = await lastValueFrom(this.getUserByToken());
+			if (res.status === 200) return true;
+			return false;
+		} catch (error) {
+			return false;
+		}
 	}
 }

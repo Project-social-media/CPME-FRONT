@@ -12,7 +12,7 @@ export class AuthGuard implements CanActivate {
 	async canActivate() {
 		const token = localStorage.getItem('token');
 
-		if (!token) return false;
+		if (!token) return this.router.createUrlTree(['/login']);
 		if (!this.usersService.getUserByTokenCheck()) return this.router.createUrlTree(['/login']);
 		return true;
 	}
@@ -28,7 +28,8 @@ export class LoginAuthGuard implements CanActivate {
 		const token = localStorage.getItem('token');
 
 		if (!token) return true;
-		if (this.usersService.getUserByTokenCheck()) return this.router.createUrlTree(['/dashboard']);
+		if (await this.usersService.getUserByTokenCheck()) return this.router.createUrlTree(['/dashboard']);
+
 		return true;
 	}
 }

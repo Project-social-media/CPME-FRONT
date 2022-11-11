@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from '@src/services/apis/auth.service';
 
 import { PopupComponent } from '../popup/popup.component';
@@ -9,14 +10,16 @@ import { PopupComponent } from '../popup/popup.component';
 	styleUrls: ['./login-page.component.scss'],
 })
 export class LoginPageComponent implements OnInit {
+	//
+	// ---------
+	// Variables
+	// ---------
+	//
+
 	popupColor!: string;
 	popupMessage!: string;
 	buttonText: string = 'CONNEXION';
 	buttonBgColor: string = '#ef1e19';
-
-	buttonPointerEvents() {
-		return this.buttonText === 'CONNEXION' ? true : false;
-	}
 
 	//
 	// ---------
@@ -24,7 +27,7 @@ export class LoginPageComponent implements OnInit {
 	// ---------
 	//
 
-	constructor(private authService: AuthService) {}
+	constructor(private authService: AuthService, private router: Router) {}
 
 	//
 	// ---------
@@ -51,6 +54,14 @@ export class LoginPageComponent implements OnInit {
 	// ---------
 	//
 
+	/**
+	 * If the button text is equal to CONNEXION, then return true, otherwise return false.
+	 * @returns The return value is a boolean value.
+	 */
+	buttonPointerEvents() {
+		return this.buttonText === 'CONNEXION' ? true : false;
+	}
+
 	onSubmit() {
 		if (!this.buttonPointerEvents()) return;
 
@@ -62,11 +73,13 @@ export class LoginPageComponent implements OnInit {
 		this.buttonText = 'Connexion en cours...';
 		this.buttonBgColor = '#d9d9d9';
 
+		// Authentification with 1second delay for the style 😎
 		setTimeout(() => {
 			this.authService.login(this.loginForm.get('username')!.value!, this.loginForm.get('password')!.value!).subscribe({
 				next: (res) => {
-					console.log('🚀 ~ file: login-page.component.ts ~ line 53 ~ LoginPageComponent ~ this.authService.login ~ res', res);
+					console.log('🚀 ~ file: login-page.component.ts ~ line 79 ~ LoginPageComponent ~ this.authService.login ~ res', res);
 					localStorage.setItem('token', res.body.accessToken);
+					window.location.href = '/dashboard';
 				},
 				error: (err) => {
 					console.log(err);
@@ -78,6 +91,13 @@ export class LoginPageComponent implements OnInit {
 		}, 1000);
 	}
 
+	/**
+	 * This function takes a message and a color as arguments, sets the popupColor and popupMessage
+	 * properties to the values of the arguments, gets the popup div element, sets the top style property
+	 * to 30px, and after a delay of 3 seconds, sets the top style property to -500px.
+	 * @param {string} message - string - The message to display in the popup
+	 * @param {string} color - string - the color of the popup
+	 */
 	displayPopup(message: string, color: string) {
 		this.popupColor = color;
 		this.popupMessage = message;
@@ -86,15 +106,9 @@ export class LoginPageComponent implements OnInit {
 
 		popup.style.top = '30px';
 
-		// delay 3s
+		// delay 3s for reset popup position
 		setTimeout(() => {
 			popup.style.top = '-500px';
-		}, 5000);
+		}, 4000);
 	}
 }
-
-//
-// ---------
-// Authenticated user after login
-// ---------
-//

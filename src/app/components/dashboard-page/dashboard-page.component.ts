@@ -7,11 +7,9 @@ import { UsersService } from '@src/services/apis/users.service';
 	styleUrls: ['./dashboard-page.component.scss'],
 })
 export class DashboardPageComponent implements OnInit {
-	checkRedirect: boolean = false;
-
-	constructor(private usersService: UsersService) {}
+	constructor() {}
 
 	async ngOnInit() {
-		this.checkRedirect = this.usersService.getUserByTokenCheck();
+		console.log('DashboardPageComponent');
 	}
 }
