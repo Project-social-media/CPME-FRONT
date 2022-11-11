@@ -8,7 +8,7 @@
 		<img src="assets/images/logo.png" alt="Logo" class="logo" />
 		<!-- Form -->
 		<div class="login-form-card">
-			<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+			<form [formGroup]="loginForm" (ngSubmit)="onSubmit(); buttonPointerEvents()">
 				<div class="form-group">
 					<div class="form-icon-container">
 						<img src="assets/images/utilisateur.png" alt="User icon" class="form-icon" />
@@ -25,9 +25,11 @@
 						<input type="password" class="form-control" formControlName="password" />
 					</div>
 				</div>
-				<button type="submit" class="btn-submit btn-primary">CONNEXION</button>
+				<button type="submit" class="btn-submit btn-primary" [ngStyle]="{ 'background-color': buttonBgColor }">{{ buttonText }}</button>
 			</form>
 		</div>
 		<!-- Form -->
 	</div>
+
+	<app-popup id="popup" [backgroundColor]="popupColor" [message]="popupMessage"></app-popup>
 </div>

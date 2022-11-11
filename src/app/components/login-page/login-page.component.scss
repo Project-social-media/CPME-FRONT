@@ -41,7 +41,7 @@
 	left: 50%;
 	transform: translate(-50%, -50%);
 
-	height: 15%;
+	height: 20%;
 	width: auto;
 }
 
@@ -141,7 +141,6 @@ input {
 }
 
 .btn-submit {
-	background-color: #ef1e19;
 	color: #ffffff;
 	font-size: large;
 	font-weight: bold;
@@ -172,6 +171,16 @@ input {
 	font-size: 1.1rem;
 }
 
+app-popup {
+	position: absolute;
+	top: -500px;
+	left: 50%;
+	transform: translateX(-50%);
+
+	// animation: popup 0.5s ease-in-out;
+	transition: all 1s ease-in-out;
+}
+
 // responsive
 @media screen and (max-width: 868px) {
 	.container {
@@ -188,6 +197,10 @@ input {
 
 	.guy-desk {
 		margin-right: 20px;
+	}
+
+	.logo {
+		height: 15%;
 	}
 }
 
