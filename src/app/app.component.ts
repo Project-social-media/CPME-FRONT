@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { last, lastValueFrom } from 'rxjs';
-import { AuthService } from '@src/services/apis/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-root',
@@ -13,7 +12,7 @@ export class AppComponent {
 	// Constructor
 	// ---------
 	//
-	constructor(private authService: AuthService) {}
+	constructor(public router: Router) {}
 
 	async ngOnInit() {}
 }

@@ -1,28 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
-:root{
-    --base-color: #FFFDFA;
-    --red-color: #C10000;
-    --darkRed-color: #680000;
-    --lightgreen-color: rgb(157, 218, 157);
+:root {
+	--base-color: #fffdfa;
+	--red-color: #c10000;
+	--darkRed-color: #680000;
+	--lightgreen-color: rgb(157, 218, 157);
 }
-
 
 body,
 html {
-    margin: 0;
-    padding: 0;
+	margin: 0;
+	padding: 0;
 
-    height: 100vh;
-    width: 100vw;
+	height: 100vh;
+	width: 100vw;
 
-    overflow: hidden;
+	overflow: hidden;
 
-    background-color: var(--base-color);
+	background-color: var(--base-color);
 }
 
-*{
-    margin: 0;
-    padding: 0;
+* {
+	margin: 0;
+	padding: 0;
 
-    font-family: garamond;
+	font-family: garamond;
 }

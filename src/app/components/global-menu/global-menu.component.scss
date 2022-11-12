@@ -1,0 +1,33 @@
+.global-container {
+	left: 0;
+
+	height: 100%;
+	width: 60px;
+
+	border-right: 1px solid #e0e0e0;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: start;
+	align-items: center;
+}
+
+.logo {
+	height: auto;
+	width: 80%;
+
+	margin-top: 20px;
+	margin-bottom: 30px;
+}
+
+.button {
+	height: auto;
+	width: 45%;
+
+	margin-bottom: 30px;
+	cursor: pointer;
+}
+
+.selected-button {
+	filter: invert(76%) sepia(68%) saturate(4049%) hue-rotate(154deg) brightness(96%) contrast(85%);
+}

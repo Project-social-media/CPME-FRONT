@@ -1,0 +1,18 @@
+.container {
+	height: 100%;
+
+	display: grid;
+	grid-template-columns: auto 1fr;
+	grid-template-rows: 1fr;
+	gap: 0px 0px;
+	grid-auto-flow: row;
+	grid-template-areas: 'menu page';
+}
+
+.page {
+	grid-area: page;
+}
+
+.menu {
+	grid-area: menu;
+}

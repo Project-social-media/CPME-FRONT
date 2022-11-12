@@ -1,1 +1,8 @@
-<router-outlet></router-outlet>
+<div class="container">
+	<div class="menu" *ngIf="this.router.url !== '/login'">
+		<app-global-menu></app-global-menu>
+	</div>
+	<div class="page">
+		<router-outlet></router-outlet>
+	</div>
+</div>

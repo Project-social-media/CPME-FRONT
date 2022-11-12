@@ -10,9 +10,11 @@ import { DashboardPageComponent } from './components/dashboard-page/dashboard-pa
 import { AuthGuard } from '@src/scripts/guards/auth.guard';
 import { TokenInterceptorProvider } from '@src/services/token/token.interceptor';
 import { PopupComponent } from './components/popup/popup.component';
+import { GlobalMenuComponent } from './components/global-menu/global-menu.component';
+import { CalendarPageComponent } from './components/calendar-page/calendar-page.component';
 
 @NgModule({
-	declarations: [AppComponent, LoginPageComponent, DashboardPageComponent, PopupComponent],
+	declarations: [AppComponent, LoginPageComponent, DashboardPageComponent, PopupComponent, GlobalMenuComponent, CalendarPageComponent],
 	imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule],
 	providers: [AuthGuard, TokenInterceptorProvider],
 	bootstrap: [AppComponent],
