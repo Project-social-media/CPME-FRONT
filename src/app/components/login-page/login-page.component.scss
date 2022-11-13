@@ -144,7 +144,8 @@ input {
 	color: #ffffff;
 	font-size: large;
 	font-weight: bold;
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Proxima Nova', sans-serif;
+	src: url('/assets/fonts/ProximaNovaFont.otf');
 
 	width: 75%;
 	height: 50px;
@@ -168,7 +169,8 @@ input {
 	outline: none;
 	border: none;
 
-	font-size: 1.1rem;
+	font-size: 1rem;
+	font-family: Helvetica, sans-serif;
 }
 
 app-popup {

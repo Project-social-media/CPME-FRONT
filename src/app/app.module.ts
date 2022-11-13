@@ -12,9 +12,10 @@ import { TokenInterceptorProvider } from '@src/services/token/token.interceptor'
 import { PopupComponent } from './components/popup/popup.component';
 import { GlobalMenuComponent } from './components/global-menu/global-menu.component';
 import { CalendarPageComponent } from './components/calendar-page/calendar-page.component';
+import { SendPageComponent } from './components/send-page/send-page.component';
 
 @NgModule({
-	declarations: [AppComponent, LoginPageComponent, DashboardPageComponent, PopupComponent, GlobalMenuComponent, CalendarPageComponent],
+	declarations: [AppComponent, LoginPageComponent, DashboardPageComponent, PopupComponent, GlobalMenuComponent, CalendarPageComponent, SendPageComponent],
 	imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule],
 	providers: [AuthGuard, TokenInterceptorProvider],
 	bootstrap: [AppComponent],

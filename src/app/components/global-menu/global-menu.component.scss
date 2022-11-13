@@ -1,4 +1,5 @@
 .global-container {
+	position: relative;
 	left: 0;
 
 	height: 100%;
@@ -26,6 +27,11 @@
 
 	margin-bottom: 30px;
 	cursor: pointer;
+}
+
+.btn-logout {
+	position: absolute;
+	bottom: 0;
 }
 
 .selected-button {

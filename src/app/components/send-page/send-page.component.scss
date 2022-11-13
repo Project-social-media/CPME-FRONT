@@ -1,0 +1,165 @@
+.global-container {
+	height: 100%;
+	width: 100%;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.container {
+	height: 100%;
+	width: 100%;
+	display: grid;
+	grid-template-columns: 1fr 4fr 1fr;
+	grid-template-rows: 5fr 1fr;
+	gap: 0px 0px;
+	grid-auto-flow: row;
+	grid-template-areas:
+		'left-box center-box right-box'
+		'bottom-box bottom-box bottom-box';
+}
+
+.center-box {
+	grid-area: center-box;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.right-box {
+	grid-area: right-box;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.left-box {
+	grid-area: left-box;
+}
+
+.bottom-box {
+	grid-area: bottom-box;
+}
+
+.text-container {
+	position: relative;
+	height: 90%;
+	width: 90%;
+}
+
+.char-count {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 10px;
+
+	color: #111111;
+	background-color: #ececec;
+	border-radius: 5px;
+	font-weight: bold;
+
+	padding: 5px;
+	border: 1px solid #111111;
+
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+
+.bottom-text-bar {
+	height: 40px;
+	width: 90%;
+
+	display: grid;
+	grid-template-columns: 2fr 1fr 2fr;
+	grid-template-rows: 5fr;
+	gap: 0px 0px;
+	grid-template-areas: 'left-text-bar center-text-bar right-text-bar';
+}
+
+.left-text-bar {
+	grid-area: left-text-bar;
+}
+.center-text-bar {
+	grid-area: center-text-bar;
+
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+.right-text-bar {
+	position: relative;
+	grid-area: right-text-bar;
+}
+
+.social-icon {
+	height: 32px;
+	width: 32px;
+	margin: 10px;
+}
+
+.image-placeholder {
+	height: 110px;
+	width: auto;
+
+	border: 1px solid #111111;
+	margin-bottom: 10px;
+	cursor: pointer;
+}
+
+.right-box-container {
+	height: 95%;
+	width: 100%;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: start;
+	align-items: flex-start;
+}
+
+.disable-social {
+	filter: saturate(0%);
+	opacity: 0.5;
+}
+
+textarea {
+	height: 100%;
+	width: 100%;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: start;
+	align-items: flex-start;
+
+	border: 1px solid #ccc;
+	outline: none;
+	resize: none;
+}
+
+/* width */
+::-webkit-scrollbar {
+	width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: #a92421;
+	border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: #630d0b;
+}
