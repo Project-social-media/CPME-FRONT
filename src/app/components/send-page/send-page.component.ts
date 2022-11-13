@@ -9,6 +9,7 @@ import { PostsService } from '@src/services/apis/posts.service';
 export class SendPageComponent implements OnInit {
 	ngChar: number = 0;
 	text!: string;
+	date!: Date;
 
 	constructor(private postsService: PostsService) {}
 
@@ -19,11 +20,16 @@ export class SendPageComponent implements OnInit {
 		this.ngChar = this.text.length;
 
 		this.facebookCheck();
-		this.twitterCheck();
+		this.twitterCheck();\design\DAFRiC6oeeQ\BaOxvNBmD8iKBhWplgyIdQ\edit
+	}
+
+	dateChange(event: any) {
+		this.date = new Date(event.target.value);
+		this.date.setHours(this.date.getHours() + 1);
 	}
 
 	sendPost() {
-		this.postsService.createPost({ message: this.text, facebook: this.facebookCheck() }).subscribe((res) => {
+		this.postsService.createPost({ message: this.text, facebook: this.facebookCheck(), date: this.date }).subscribe((res) => {
 			console.log(res);
 		});
 	}
