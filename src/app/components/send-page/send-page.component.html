@@ -13,7 +13,7 @@
 				</div>
 				<div class="center-text-bar">
 					<button (click)="sendPost()">Send</button>
-					<input type="datetime-local" />
+					<input type="datetime-local" (input)="dateChange($event)" />
 				</div>
 				<div class="right-text-bar">
 					<p class="char-count">{{ ngChar }}</p>

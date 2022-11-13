@@ -20,7 +20,7 @@ export class SendPageComponent implements OnInit {
 		this.ngChar = this.text.length;
 
 		this.facebookCheck();
-		this.twitterCheck();\design\DAFRiC6oeeQ\BaOxvNBmD8iKBhWplgyIdQ\edit
+		this.twitterCheck();
 	}
 
 	dateChange(event: any) {
