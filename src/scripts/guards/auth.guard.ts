@@ -12,8 +12,13 @@ export class AuthGuard implements CanActivate {
 	async canActivate() {
 		const token = localStorage.getItem('token');
 
-		if (!token) return this.router.createUrlTree(['/login']);
-		if (!this.usersService.getUserByTokenCheck()) return this.router.createUrlTree(['/login']);
+		if (!token) return this.router.navigate(['/login']);
+
+		this.usersService.getUserByTokenCheck().then((res) => {
+			if (!res) return this.router.navigate(['/login']);
+			return true;
+		});
+
 		return true;
 	}
 }
@@ -28,7 +33,11 @@ export class LoginAuthGuard implements CanActivate {
 		const token = localStorage.getItem('token');
 
 		if (!token) return true;
-		if (await this.usersService.getUserByTokenCheck()) return this.router.createUrlTree(['/dashboard']);
+
+		this.usersService.getUserByTokenCheck().then((res) => {
+			if (res) return this.router.navigate(['/dashboard']);
+			return true;
+		});
 
 		return true;
 	}
