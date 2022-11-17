@@ -133,6 +133,26 @@
 	opacity: 0.5;
 }
 
+.div-social-icon {
+	position: relative;
+}
+
+.cadenas-icon-facebook {
+	position: absolute;
+	bottom: 10px;
+	right: 0px;
+	height: 20px;
+	width: 20px;
+}
+
+.disable-icon-facebook {
+	position: absolute;
+	bottom: 10px;
+	right: 0px;
+	height: 20px;
+	width: 20px;
+}
+
 // Decorations
 
 .planet-design {

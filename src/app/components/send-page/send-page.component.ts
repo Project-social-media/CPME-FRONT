@@ -36,7 +36,7 @@ export class SendPageComponent implements OnInit {
 
 		if (!confirm('Êtes-vous sûr de vouloir envoyer ce message ?')) return;
 
-		this.postsService.createPost({ message: this.text, facebook: this.facebookCheck(), twitter: this.twitterCheck(), date: this.date }).subscribe((res) => {
+		this.postsService.createPost({ message: this.text, facebook: this.facebookCheck(), twitter: false, date: this.date }).subscribe((res) => {
 			console.log(res);
 		});
 	}
