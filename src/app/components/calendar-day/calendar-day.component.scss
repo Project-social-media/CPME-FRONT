@@ -1,0 +1,33 @@
+.day-case {
+	height: 100%;
+	width: 100%;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	margin-left: -1px;
+
+	border: 1px solid rgb(105, 105, 105);
+
+	color: rgb(105, 105, 105);
+}
+
+.global-container {
+	height: 100%;
+	width: 100%;
+
+	display: flex;
+	flex-direction: row;
+	justify-content: start;
+	align-items: center;
+}
+
+.boder-radius-top-left {
+	border-radius: 10px 0 0 0;
+}
+
+.boder-radius-top-right {
+	border-radius: 0 10px 0 0;
+}

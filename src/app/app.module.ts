@@ -14,9 +14,11 @@ import { GlobalMenuComponent } from './components/global-menu/global-menu.compon
 import { CalendarPageComponent } from './components/calendar-page/calendar-page.component';
 import { SendPageComponent } from './components/send-page/send-page.component';
 import { PickerModule } from '@ctrl/ngx-emoji-mart';
+import { CalendarDayComponent } from './components/calendar-day/calendar-day.component';
+import { CalendarCaseComponent } from './components/calendar-case/calendar-case.component';
 
 @NgModule({
-	declarations: [AppComponent, LoginPageComponent, DashboardPageComponent, PopupComponent, GlobalMenuComponent, CalendarPageComponent, SendPageComponent],
+	declarations: [AppComponent, LoginPageComponent, DashboardPageComponent, PopupComponent, GlobalMenuComponent, CalendarPageComponent, SendPageComponent, CalendarDayComponent, CalendarCaseComponent],
 	imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule, PickerModule],
 	providers: [AuthGuard, TokenInterceptorProvider],
 	bootstrap: [AppComponent],
