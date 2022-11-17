@@ -13,10 +13,11 @@ import { PopupComponent } from './components/popup/popup.component';
 import { GlobalMenuComponent } from './components/global-menu/global-menu.component';
 import { CalendarPageComponent } from './components/calendar-page/calendar-page.component';
 import { SendPageComponent } from './components/send-page/send-page.component';
+import { PickerModule } from '@ctrl/ngx-emoji-mart';
 
 @NgModule({
 	declarations: [AppComponent, LoginPageComponent, DashboardPageComponent, PopupComponent, GlobalMenuComponent, CalendarPageComponent, SendPageComponent],
-	imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule],
+	imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule, PickerModule],
 	providers: [AuthGuard, TokenInterceptorProvider],
 	bootstrap: [AppComponent],
 })

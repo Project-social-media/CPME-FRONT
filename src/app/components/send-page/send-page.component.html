@@ -1,15 +1,39 @@
 <div class="global-container">
 	<div class="container">
+		<div class="text">
+			<textarea class="text_area" type="text" id="text" (input)="textChange($event)" placeholder="Entre votre message ici..."></textarea>
+
+			<span class="dot" (click)="sendPost()">
+				<img src="assets/images/sendIcon.png" alt="dot" class="send_icon" />
+			</span>
+		</div>
+		<div class="menu-text">
+			<div class="left-menu">
+				<img src="assets/images/facebook.png" alt="facebook icone" id="facebook-icon" class="social-icon" />
+				<img src="assets/images/twitter.png" alt="twitter icone" id="twitter-icon" class="social-icon" />
+				<img src="assets/images/instagram.png" alt="instagram icone" class="social-icon" />
+				<img src="assets/images/linkedin.png" alt="linkedin icone" class="social-icon" />
+			</div>
+			<div class="middle-menu">
+				<p class="char-count">{{ ngChar }}</p>
+			</div>
+			<div class="right-menu">
+				<input type="datetime-local" class="calendar" (input)="dateChange($event)" />
+			</div>
+		</div>
+	</div>
+
+	<img src="assets\images\planet.png" class="planet-design" />
+	<img src="assets\images\asparagus.png" class="asparagus-design" />
+
+	<!-- <div class="container">
 		<div class="center-box">
 			<div class="text-container">
 				<textarea type="text" id="text" (input)="textChange($event)"></textarea>
 			</div>
 			<div class="bottom-text-bar">
 				<div class="left-text-bar">
-					<img src="assets/images/facebook.png" alt="facebook icone" id="facebook-icon" class="social-icon" />
-					<img src="assets/images/twitter.png" alt="twitter icone" id="twitter-icon" class="social-icon" />
-					<img src="assets/images/instagram.png" alt="instagram icone" class="social-icon" />
-					<img src="assets/images/linkedin.png" alt="linkedin icone" class="social-icon" />
+
 				</div>
 				<div class="center-text-bar">
 					<button (click)="sendPost()">Send</button>
@@ -23,12 +47,9 @@
 		<div class="right-box">
 			<div class="right-box-container">
 				<img src="assets/images/add-image-placeholder.jpg" alt="add image placeholder" class="image-placeholder" />
-				<img src="assets/images/add-image-placeholder.jpg" alt="add image placeholder" class="image-placeholder" />
-				<img src="assets/images/add-image-placeholder.jpg" alt="add image placeholder" class="image-placeholder" />
-				<img src="assets/images/add-image-placeholder.jpg" alt="add image placeholder" class="image-placeholder" />
 			</div>
 		</div>
 		<div class="left-box"></div>
 		<div class="bottom-box"></div>
-	</div>
+	</div> -->
 </div>

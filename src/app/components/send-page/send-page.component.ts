@@ -29,6 +29,13 @@ export class SendPageComponent implements OnInit {
 	}
 
 	sendPost() {
+		if (!this.text) {
+			alert('Entrez un texte pour envoyer le post');
+			return;
+		}
+
+		if (!confirm('Êtes-vous sûr de vouloir envoyer ce message ?')) return;
+
 		this.postsService.createPost({ message: this.text, facebook: this.facebookCheck(), twitter: this.twitterCheck(), date: this.date }).subscribe((res) => {
 			console.log(res);
 		});
