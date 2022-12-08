@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '@src/services/apis/auth.service';
+import { AuthService } from '@src/services/apis/auth.services';
 @Component({
 	selector: 'app-global-menu',
 	templateUrl: './global-menu.component.html',

@@ -5,13 +5,14 @@ import { DashboardPageComponent } from './components/dashboard-page/dashboard-pa
 import { AuthGuard, LoginAuthGuard } from '@src/scripts/guards/auth.guard';
 import { CalendarPageComponent } from './components/calendar-page/calendar-page.component';
 import { SendPageComponent } from './components/send-page/send-page.component';
+import { SendingPageComponent } from './components/sending-page/sending-page.component';
 
 const routes: Routes = [
 	{ path: '', redirectTo: 'login', pathMatch: 'full' },
 	{ path: 'login', component: LoginPageComponent, canActivate: [LoginAuthGuard] },
 	{ path: 'dashboard', component: DashboardPageComponent, canActivate: [AuthGuard] },
 	{ path: 'calendar', component: CalendarPageComponent, canActivate: [AuthGuard] },
-	{ path: 'send', component: SendPageComponent, canActivate: [AuthGuard] },
+	{ path: 'send', component: SendingPageComponent, canActivate: [AuthGuard] },
 	{ path: '**', redirectTo: 'login' },
 ];
 

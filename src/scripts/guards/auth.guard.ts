@@ -1,24 +1,28 @@
 import { Injectable } from '@angular/core';
 import { Router, CanActivate } from '@angular/router';
-import { lastValueFrom } from 'rxjs';
-import { UsersService } from '@src/services/apis/users.service';
+import { UserService } from '@src/services/apis/users.services';
 
 @Injectable({
 	providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
-	constructor(private usersService: UsersService, private router: Router) {}
+	constructor(private usersService: UserService, private router: Router) {}
 
 	async canActivate() {
 		const token = localStorage.getItem('token');
 
+		// Si il n'y a pas de token, on redirige vers la page de login
 		if (!token) return this.router.navigate(['/login']);
 
-		this.usersService.getUserByTokenCheck().then((res) => {
-			if (!res) return this.router.navigate(['/login']);
-			return true;
-		});
+		// Si la vérification du token échoue, on redirige vers la page de login
+		try {
+			const user = await this.usersService.getUserByTokenCheck();
+			if (!user) return this.router.navigate(['/login']);
+		} catch (error) {
+			return this.router.navigate(['/login']);
+		}
 
+		// Si toutes les vérifications ont été passées, on autorise l'accès
 		return true;
 	}
 }
@@ -27,18 +31,23 @@ export class AuthGuard implements CanActivate {
 	providedIn: 'root',
 })
 export class LoginAuthGuard implements CanActivate {
-	constructor(private usersService: UsersService, private router: Router) {}
+	constructor(private usersService: UserService, private router: Router) {}
 
 	async canActivate() {
 		const token = localStorage.getItem('token');
 
+		// Si il n'y a pas de token, on autorise l'accès à la page de login
 		if (!token) return true;
 
-		this.usersService.getUserByTokenCheck().then((res) => {
-			if (res) return this.router.navigate(['/dashboard']);
-			return true;
-		});
+		// Si la vérification du token réussit, on redirige vers le dashboard
+		try {
+			const user = await this.usersService.getUserByTokenCheck();
+			if (user) return this.router.navigate(['/dashboard']);
+		} catch (error) {
+			return this.router.navigate(['/login']);
+		}
 
+		// Si toutes les vérifications ont été passées, on autorise l'accès
 		return true;
 	}
 }

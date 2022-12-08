@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { PostsService } from '@src/services/apis/posts.services';
 
 @Component({
-	selector: 'app-send-page',
-	templateUrl: './send-page.component.html',
-	styleUrls: ['./send-page.component.scss'],
+	selector: 'app-sending-page',
+	templateUrl: './sending-page.component.html',
+	styleUrls: ['./sending-page.component.scss'],
 })
-export class SendPageComponent implements OnInit {
+export class SendingPageComponent {
 	ngChar: number = 0;
 	text!: string;
 	date!: Date;
@@ -15,6 +15,7 @@ export class SendPageComponent implements OnInit {
 
 	ngOnInit(): void {}
 
+	// NOT USED
 	textChange(event: any) {
 		this.text = event.target.value;
 		this.ngChar = this.text.length;
@@ -22,6 +23,7 @@ export class SendPageComponent implements OnInit {
 		this.facebookCheck();
 		this.twitterCheck();
 	}
+	// NOT USED
 
 	dateChange(event: any) {
 		this.date = new Date(event.target.value);

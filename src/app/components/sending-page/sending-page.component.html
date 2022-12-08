@@ -1,0 +1,42 @@
+<div class="global-container">
+	<div class="container">
+		<div class="text">
+			<span class="dot-next" (click)="sendPost()">
+				<img src="assets/images/next.png" al="dot" class="send_icon" />
+			</span>
+			<span class="dot-previous" (click)="sendPost()">
+				<img src="assets/images/next.png" al="dot" class="send_icon" />
+			</span>
+		</div>
+		<div class="menu-text">
+			<div class="left-menu">
+				<div class="div-social-icon">
+					<img src="assets/images/facebook.png" alt="facebook icone" id="facebook-icon" class="social-icon" />
+					<!-- <img src="assets/images/cadenas2.png" alt="cadenas-icon-facebook" class="cadenas-icon-facebook" />
+					<img src="assets/images/interdit.png" alt="cadenas-icon-facebook" class="disable-icon-facebook" /> -->
+				</div>
+
+				<div class="div-social-icon">
+					<img src="assets/images/twitter.png" alt="twitter icone" id="twitter-icon" class="social-icon disable-social" />
+				</div>
+
+				<div class="div-social-icon">
+					<img src="assets/images/instagram.png" alt="instagram icone" class="social-icon disable-social" />
+				</div>
+
+				<div class="div-social-icon">
+					<img src="assets/images/linkedin.png" alt="linkedin icone" class="social-icon disable-social" />
+				</div>
+			</div>
+			<div class="middle-menu">
+				<p class="char-count">{{ ngChar }}</p>
+			</div>
+			<div class="right-menu">
+				<input type="datetime-local" class="calendar" (input)="dateChange($event)" />
+			</div>
+		</div>
+	</div>
+
+	<img src="assets\images\planet.png" class="planet-design" />
+	<img src="assets\images\asparagus.png" class="asparagus-design" />
+</div>
