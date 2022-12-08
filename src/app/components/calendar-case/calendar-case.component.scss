@@ -1,37 +1,48 @@
 .global-container {
 	height: 100%;
 	width: 100%;
-
 	display: flex;
 	flex-wrap: wrap;
 }
 
 .case {
 	flex: 1 0 14%;
-
 	height: auto;
 	width: 100%;
-
 	margin-left: -1px;
 	margin-top: -1px;
-
 	border: 1px solid rgba(133, 133, 133, 0.616);
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+	border-radius: 5px;
+	overflow: hidden;
+	transition: all 0.3s ease-in-out;
+}
+
+.case:hover {
+	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+	transform: translateY(-2px);
 }
 
 .day-case {
 	height: 100%;
 	width: 100%;
+	background-color: #fafafa;
+	padding: 10px;
+	box-sizing: border-box;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
 }
 
 .number-day {
-	position: absolute;
-	margin: 10px;
-
 	font-weight: bold;
-
-	color: rgb(129, 129, 129);
+	color: rgba(129, 129, 129, 1);
+	text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);
+	font-size: 24px;
+	margin-bottom: 10px;
 }
 
 .before {
-	background-color: #f3ffd6;
+	background-color: #ffe3d6;
 }
