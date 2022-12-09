@@ -1,6 +1,8 @@
 <div class="global-container">
 	<div class="container">
 		<div class="text">
+			<textarea class="text_area" type="text" id="text" (input)="textChange($event)" placeholder="Entre votre message ici..."></textarea>
+
 			<span class="dot-next" (click)="sendPost()">
 				<img src="assets/images/next.png" al="dot" class="send_icon" />
 			</span>
