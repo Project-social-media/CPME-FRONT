@@ -11,9 +11,35 @@ export class SendingPageComponent {
 	text!: string;
 	date!: Date;
 
+	socialMedia = {
+		facebook: {
+			text: 'Facebook',
+			isActive: true,
+			iconId: 'facebook-icon',
+		},
+		twitter: {
+			text: 'Twitter',
+			isActive: false,
+			iconId: 'twitter-icon',
+		},
+		instagram: {
+			text: 'Instagram',
+			isActive: false,
+			iconId: 'instagram-icon',
+		},
+		linkedin: {
+			text: 'LinkedIn',
+			isActive: false,
+			iconId: 'linkedin-icon',
+		},
+	};
+
 	constructor(private postsService: PostsService) {}
 
-	ngOnInit(): void {}
+	ngOnInit(): void {
+		console.log(this.socialMedia);
+		this.disableIcon(Object.values(this.socialMedia));
+	}
 
 	// NOT USED
 	textChange(event: any) {
@@ -28,6 +54,36 @@ export class SendingPageComponent {
 	dateChange(event: any) {
 		this.date = new Date(event.target.value);
 		this.date.setHours(this.date.getHours() + 1);
+	}
+
+	nextMedia() {
+		console.log(this.socialMedia);
+		this.setNextActive(Object.values(this.socialMedia));
+		console.log(this.socialMedia);
+	}
+
+	setNextActive(items: { text: string; isActive: boolean; iconId: string }[]): void {
+		// Find the currently active item
+		const activeIndex = items.findIndex((item) => item.isActive);
+		if (activeIndex === -1) return; // No active item, stop the function
+
+		// Set the current active item to inactive
+		items[activeIndex].isActive = false;
+
+		// Set the next item in the list to active (or the first item if it was the last one)
+		items[(activeIndex + 1) % items.length].isActive = true;
+
+		this.disableIcon(items);
+	}
+
+	disableIcon(items: { text: string; isActive: boolean; iconId: string }[]) {
+		items.forEach((item) => {
+			if (!item.isActive) {
+				document.getElementById(item.iconId)!.classList.add('disable-social');
+			} else {
+				document.getElementById(item.iconId)!.classList.remove('disable-social');
+			}
+		});
 	}
 
 	sendPost() {
