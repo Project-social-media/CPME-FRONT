@@ -1,33 +1,32 @@
 <div class="global-container">
 	<div class="container">
 		<div class="text">
-			<textarea class="text_area" type="text" id="text" placeholder="Entrez votre message..."></textarea>
+			<textarea class="text_area" type="text" id="textArea" placeholder="Entrez votre message..." (change)="updateTextInActiveElement($event)"></textarea>
 
-			<span class="dot-next">
+			<span class="dot-next" (click)="boutonClick('next')" [ngClass]="{ 'disable-button': getActiveElement(this.socialMedia)!.key === 'linkedin' }">
 				<img src="assets/images/next.png" al="dot" class="send_icon" />
 			</span>
-			<span class="dot-previous">
+			<span class="dot-previous" (click)="boutonClick('prev')" [ngClass]="{ 'disable-button': getActiveElement(this.socialMedia)!.key === 'facebook' }">
 				<img src="assets/images/next.png" al="dot" class="send_icon" />
 			</span>
 		</div>
 		<div class="menu-text">
 			<div class="left-menu">
 				<div class="div-social-icon">
-					<img src="assets/images/facebook.png" alt="facebook icone" id="facebook-icon" class="social-icon" />
-					<!-- <img src="assets/images/cadenas2.png" alt="cadenas-icon-facebook" class="cadenas-icon-facebook" />
-					<img src="assets/images/interdit.png" alt="cadenas-icon-facebook" class="disable-icon-facebook" /> -->
+					<img src="assets/images/facebook.png" alt="facebook icone" id="facebook-icon" class="social-icon" [ngClass]="{ 'disable-social': getActiveElement(this.socialMedia)!.key !== 'facebook' }" />
+					<!-- <img src="assets/images/interdit.png" alt="cadenas-icon-facebook" class="disable-icon-facebook" /> -->
 				</div>
 
 				<div class="div-social-icon">
-					<img src="assets/images/twitter.png" alt="twitter icone" id="twitter-icon" class="social-icon" />
+					<img src="assets/images/twitter.png" alt="twitter icone" id="twitter-icon" class="social-icon" [ngClass]="{ 'disable-social': getActiveElement(this.socialMedia)!.key !== 'twitter' }" />
 				</div>
 
 				<div class="div-social-icon">
-					<img src="assets/images/instagram.png" alt="instagram icone" id="instagram-icon" class="social-icon" />
+					<img src="assets/images/instagram.png" alt="instagram icone" id="instagram-icon" class="social-icon" [ngClass]="{ 'disable-social': getActiveElement(this.socialMedia)!.key !== 'instagram' }" />
 				</div>
 
 				<div class="div-social-icon">
-					<img src="assets/images/linkedin.png" alt="linkedin icone" id="linkedin-icon" class="social-icon" />
+					<img src="assets/images/linkedin.png" alt="linkedin icone" id="linkedin-icon" class="social-icon" [ngClass]="{ 'disable-social': getActiveElement(this.socialMedia)!.key !== 'linkedin' }" />
 				</div>
 			</div>
 			<div class="middle-menu">

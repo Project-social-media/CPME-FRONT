@@ -25,25 +25,25 @@ export class SendingPageComponent {
 	socialMedia: SocialMedia[] = [
 		{
 			key: this.FACEBOOK_KEY,
-			text: 'Facebook',
+			text: '',
 			isActive: true,
 			iconId: 'facebook-icon',
 		},
 		{
 			key: this.TWITTER_KEY,
-			text: 'Twitter',
+			text: '',
 			isActive: false,
 			iconId: 'twitter-icon',
 		},
 		{
 			key: this.INSTAGRAM_KEY,
-			text: 'Instagram',
+			text: '',
 			isActive: false,
 			iconId: 'instagram-icon',
 		},
 		{
 			key: this.LINKEDIN_KEY,
-			text: 'LinkedIn',
+			text: '',
 			isActive: false,
 			iconId: 'linkedin-icon',
 		},
@@ -66,5 +66,66 @@ export class SendingPageComponent {
 
 		// Set the date property to the updated date
 		this.date = date;
+	}
+
+	//////////////////////////////////////////////////
+	// Functions pour le tableau
+	//////////////////////////////////////////////////
+
+	getActiveElement(arr: SocialMedia[]) {
+		return arr.find((element) => element.isActive === true);
+	}
+
+	async updateActiveElement(arr: SocialMedia[], direction: string) {
+		let activeElement = arr.find((element) => element.isActive === true);
+
+		if (!activeElement) return;
+
+		activeElement.isActive = false;
+		const activeIndex = arr.indexOf(activeElement);
+
+		if (direction === 'next') {
+			if (activeIndex === arr.length - 1) {
+				activeElement.isActive = true;
+				return;
+			}
+			const nextIndex = activeIndex === arr.length - 1 ? 0 : activeIndex + 1;
+			arr[nextIndex].isActive = true;
+		} else if (direction === 'prev') {
+			if (activeIndex === 0) {
+				activeElement.isActive = true;
+				return;
+			}
+			const prevIndex = activeIndex === 0 ? arr.length - 1 : activeIndex - 1;
+			arr[prevIndex].isActive = true;
+		}
+	}
+
+	//////////////////////////////////////////////////
+	// Functions pour les boutons
+	//////////////////////////////////////////////////
+
+	async boutonClick(direction: string) {
+		await this.updateActiveElement(this.socialMedia, direction);
+		this.updateTextArea();
+	}
+
+	//////////////////////////////////////////////////
+	// Functions pour le textarea
+	//////////////////////////////////////////////////
+
+	updateTextArea() {
+		const activeElement = this.getActiveElement(this.socialMedia);
+		if (!activeElement) return;
+
+		const textArea = document.getElementById('textArea') as HTMLTextAreaElement;
+		textArea.value = activeElement.text;
+	}
+
+	updateTextInActiveElement($event: any) {
+		const activeElement = this.getActiveElement(this.socialMedia);
+		if (!activeElement) return;
+
+		activeElement.text = $event.target.value;
 	}
 }

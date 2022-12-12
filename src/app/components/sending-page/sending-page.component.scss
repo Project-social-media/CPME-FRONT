@@ -10,6 +10,11 @@
 	align-items: center;
 }
 
+img {
+	// Désactive le surlignage des images lorsqu'elles sont sélectionnées
+	user-select: none;
+}
+
 .container {
 	height: 80%;
 	width: 80%;
@@ -154,6 +159,12 @@
 		height: 50%;
 		width: auto;
 	}
+}
+
+.disable-button {
+	opacity: 0.5;
+	filter: saturate(0%);
+	cursor: not-allowed;
 }
 
 .disable-social {
