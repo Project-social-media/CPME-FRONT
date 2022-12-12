@@ -49,7 +49,7 @@ export class SendingPageComponent {
 		},
 	];
 
-	constructor() {}
+	constructor(private postsService: PostsService) {}
 
 	ngOnInit(): void {}
 
@@ -127,5 +127,54 @@ export class SendingPageComponent {
 		if (!activeElement) return;
 
 		activeElement.text = $event.target.value;
+	}
+
+	//////////////////////////////////////////////////
+	// Functions pour l'envoi des posts
+	//////////////////////////////////////////////////
+
+	processSocialMedia() {
+		if (!this.alertSend()) return;
+
+		// Filter socialMedia to only include items with non-empty text
+		const nonEmptyItems = this.socialMedia.filter((item) => item.text !== '');
+
+		// Use map() to call createPost() for each non-empty item
+		nonEmptyItems.map((item) => {
+			this.postsService.createPost({ message: item.text, date: this.date, [item.key]: true }).subscribe({
+				next: (data) => {
+					console.log(data);
+				},
+				error: (error) => {
+					console.error('There was an error!', error);
+				},
+			});
+		});
+	}
+
+	alertSend(): boolean {
+		let listMedia = 'Vous allez envoyer sur :\n';
+		this.socialMedia.forEach((item) => {
+			if (item.text !== '') {
+				listMedia += '- ' + item.key + '\n';
+			}
+		});
+
+		let date;
+		if (this.date) {
+			date = this.date.toLocaleDateString('fr-FR', {
+				weekday: 'long',
+				year: 'numeric',
+				month: 'long',
+				day: 'numeric',
+				hour: 'numeric',
+				minute: 'numeric',
+			});
+			listMedia += '\nSera publié le : ' + date;
+		} else {
+			date = 'Maintenant';
+			listMedia += '\nSera publié : ' + date;
+		}
+		return confirm(listMedia);
 	}
 }

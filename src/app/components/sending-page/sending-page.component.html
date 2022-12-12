@@ -3,10 +3,15 @@
 		<div class="text">
 			<textarea class="text_area" type="text" id="textArea" placeholder="Entrez votre message..." (change)="updateTextInActiveElement($event)"></textarea>
 
-			<span class="dot-next" (click)="boutonClick('next')" [ngClass]="{ 'disable-button': getActiveElement(this.socialMedia)!.key === 'linkedin' }">
+			<span class="dot-next" (click)="boutonClick('next')" [ngClass]="{ 'display-none-button': getActiveElement(this.socialMedia)!.key === 'linkedin' }">
 				<img src="assets/images/next.png" al="dot" class="send_icon" />
 			</span>
-			<span class="dot-previous" (click)="boutonClick('prev')" [ngClass]="{ 'disable-button': getActiveElement(this.socialMedia)!.key === 'facebook' }">
+
+			<span class="dot-send" (click)="processSocialMedia()" [ngClass]="{ 'display-button': getActiveElement(this.socialMedia)!.key === 'linkedin' }">
+				<img src="assets/images/sendIcon.png" al="dot" class="send_icon" />
+			</span>
+
+			<span class="dot-previous" (click)="boutonClick('prev')" [ngClass]="{ 'display-none-button': getActiveElement(this.socialMedia)!.key === 'facebook' }">
 				<img src="assets/images/next.png" al="dot" class="send_icon" />
 			</span>
 		</div>
