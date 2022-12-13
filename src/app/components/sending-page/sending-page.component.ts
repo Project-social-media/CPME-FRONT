@@ -144,6 +144,7 @@ export class SendingPageComponent {
 			this.postsService.createPost({ message: item.text, date: this.date, [item.key]: true }).subscribe({
 				next: (data) => {
 					console.log(data);
+					this.displayPopup();
 				},
 				error: (error) => {
 					console.error('There was an error!', error);
@@ -176,5 +177,23 @@ export class SendingPageComponent {
 			listMedia += '\nSera publié : ' + date;
 		}
 		return confirm(listMedia);
+	}
+
+	//////////////////////////////////////////////////
+	// Functions pour l'envoi des posts
+	//////////////////////////////////////////////////
+
+	displayPopup() {
+		// this.popupColor = color;
+		// this.popupMessage = message;
+		// Get specifiq div element
+		var popup = document.getElementById('popup')!;
+
+		popup.style.top = '30px';
+
+		// delay 3s for reset popup position
+		setTimeout(() => {
+			popup.style.top = '-500px';
+		}, 4000);
 	}
 }
