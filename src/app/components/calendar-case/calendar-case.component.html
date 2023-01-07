@@ -1,8 +1,14 @@
 <div class="global-container">
 	<div class="case" *ngFor="let day of getMonthDays()">
 		<!-- If day generate if day before today add class "before" -->
-		<div class="day-case" [ngClass]="{ before: day < getYesterday() }">
+		<div class="day-case" [ngClass]="{ before: day < getYesterday(), 'current-day': day === getToday() }">
 			<span class="number-day">{{ day.getDate() }}</span>
+			<div class="dot-container">
+				<div class="dot">0</div>
+				<div class="dot">0</div>
+				<div class="dot">0</div>
+				<div class="dot">0</div>
+			</div>
 		</div>
 	</div>
 </div>

@@ -38,4 +38,8 @@ export class CalendarCaseComponent {
 		date.setDate(date.getDate() - 1);
 		return date;
 	}
+
+	getToday() {
+		return new Date();
+	}
 }

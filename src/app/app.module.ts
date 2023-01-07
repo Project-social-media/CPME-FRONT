@@ -17,10 +17,12 @@ import { PickerModule } from '@ctrl/ngx-emoji-mart';
 import { CalendarDayComponent } from './components/calendar-day/calendar-day.component';
 import { CalendarCaseComponent } from './components/calendar-case/calendar-case.component';
 import { SendingPageComponent } from './components/sending-page/sending-page.component';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 @NgModule({
 	declarations: [AppComponent, LoginPageComponent, DashboardPageComponent, PopupComponent, GlobalMenuComponent, CalendarPageComponent, SendPageComponent, CalendarDayComponent, CalendarCaseComponent, SendingPageComponent],
-	imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule, PickerModule],
+	imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule, PickerModule, CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory })],
 	providers: [AuthGuard, TokenInterceptorProvider],
 	bootstrap: [AppComponent],
 })
