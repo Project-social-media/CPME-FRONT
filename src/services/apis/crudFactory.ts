@@ -18,7 +18,7 @@ export abstract class CRUDFactory {
 	// Créez un objet avec les méthodes CRUD pour les ressources
 	crudMethods: ICRUDMethods = {
 		get: (id: string | number) => this.http.get(`${this.apiURL}/id/${id}`, { observe: 'response', responseType: 'json' }),
-		getAll: () => this.http.get(`${this.apiURL}/all`, { observe: 'response', responseType: 'json' }),
+		getAll: () => this.http.get(`${this.apiURL}/`, { observe: 'response', responseType: 'json' }),
 		create: (data: any) => this.http.post(`${this.apiURL}/create`, data, { observe: 'response', responseType: 'json' }),
 		update: (id: string | number, data: any) => this.http.put(`${this.apiURL}/update/${id}`, data, { observe: 'response', responseType: 'json' }),
 		delete: (id: string | number) => this.http.delete(`${this.apiURL}/delete/${id}`, { observe: 'response', responseType: 'json' }),

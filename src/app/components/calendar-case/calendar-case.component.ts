@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PostsService } from '@src/services/apis/posts.services';
 
 @Component({
 	selector: 'app-calendar-case',
@@ -6,7 +7,7 @@ import { Component } from '@angular/core';
 	styleUrls: ['./calendar-case.component.scss'],
 })
 export class CalendarCaseComponent {
-	constructor() {}
+	constructor(private postsService: PostsService) {}
 
 	ngOnInit() {}
 
@@ -14,11 +15,8 @@ export class CalendarCaseComponent {
 		const days = [];
 		const date = new Date();
 		const firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
-		const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
 		const firstDayIndex = firstDay.getDay();
-		const lastDayIndex = lastDay.getDay();
 		const firstDayDate = firstDay.getDate();
-		const lastDayDate = lastDay.getDate();
 
 		if (firstDayIndex === 1) {
 			for (let i = 0; i < 30; i++) {
@@ -31,6 +29,15 @@ export class CalendarCaseComponent {
 		}
 
 		return days;
+	}
+
+	getAllPostsByDate(date: Date) {
+		this.postsService.getAllPostsByDate(date).subscribe({
+			next: (response) => {
+				console.log(response);
+				return 0;
+			},
+		});
 	}
 
 	getYesterday() {

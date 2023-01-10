@@ -12,4 +12,9 @@ export class DashboardPageComponent implements OnInit {
 	async ngOnInit() {
 		console.log('DashboardPageComponent');
 	}
+
+	// random 1 to 9999
+	randomNumber() {
+		return Math.floor(Math.random() * 9999) + 1;
+	}
 }

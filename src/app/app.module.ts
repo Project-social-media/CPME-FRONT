@@ -19,9 +19,10 @@ import { CalendarCaseComponent } from './components/calendar-case/calendar-case.
 import { SendingPageComponent } from './components/sending-page/sending-page.component';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { CalendarViewListComponent } from './components/calendar-view-list/calendar-view-list.component';
 
 @NgModule({
-	declarations: [AppComponent, LoginPageComponent, DashboardPageComponent, PopupComponent, GlobalMenuComponent, CalendarPageComponent, SendPageComponent, CalendarDayComponent, CalendarCaseComponent, SendingPageComponent],
+	declarations: [AppComponent, LoginPageComponent, DashboardPageComponent, PopupComponent, GlobalMenuComponent, CalendarPageComponent, SendPageComponent, CalendarDayComponent, CalendarCaseComponent, SendingPageComponent, CalendarViewListComponent],
 	imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule, PickerModule, CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory })],
 	providers: [AuthGuard, TokenInterceptorProvider],
 	bootstrap: [AppComponent],
